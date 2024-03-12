@@ -63,19 +63,29 @@ def decrement(outputLEDs):
         
 
 def main():
-    # Initialize all LEDs to zeroes
-    setZeroes(outputLEDs)
+    setOnes(outputLEDs)
     sleep(1)
 
-    while True:
+    while True:   
         
-        if T1.value() == 1:
+        if(T1.value()):
             increment(outputLEDs)
-            print("radi")
-        else:
-            print("ne radi")
-
-        sleep(0.1)
+            while T1.value():
+                sleep(0.1)
+        elif(T2.value()):
+            decrement(outputLEDs)
+            while T2.value():
+                sleep(0.1)
+        elif(T3.value()):
+            setZeroes(outputLEDs)
+            while T3.value():
+                sleep(0.1)
+        elif(T4.value()):
+            setOnes(outputLEDs)
+            while T4.value():
+                sleep(0.1)
+            
+        sleep(0.25)
 
             
 

@@ -5,6 +5,7 @@ red = Pin(14, Pin.OUT)
 green = Pin(12, Pin.OUT)
 blue = Pin(13, Pin.OUT)
 
+
 def setRGB(r, g, b):  # True / False (1 / 0)
     red.value(r)
     green.value(g)
@@ -19,14 +20,22 @@ def permuteRGB(pauseTime):
                 sleep(pauseTime)
 
 
-
 def main():
+
+    
     while True:
         pauseTime = 0.1
         
         while pauseTime <= 1.0:
             permuteRGB(pauseTime)
             pauseTime += 0.1
+        print("max")
+        
+        while pauseTime >= 0.1:
+            permuteRGB(pauseTime)
+            pauseTime -= 0.1
+        print("min")
 
-if __name__ == "__main__":
+
+if __name__ == "__main__": 
     main()
