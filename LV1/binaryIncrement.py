@@ -1,9 +1,6 @@
 from machine import Pin
 from time import sleep
 
-print("Hello, Pi Pico!")
-sleep(0.1) # Wait for USB to become ready
-
 T1 = Pin(0, Pin.IN)  # Increment
 T2 = Pin(1, Pin.IN)  # Decrement
 T3 = Pin(2, Pin.IN)  # Set sum to 0x00
