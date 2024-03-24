@@ -1,0 +1,33 @@
+Initialize:
+    button_pin = Pin(button_pin_number, Pin.IN)
+    previous_button_state = button_pin.value()
+    button_press_start_time = 0
+    hold_threshold = 1000  # Adjust as needed (in milliseconds)
+
+Main Loop:
+    current_button_state = button_pin.value()
+    
+    if current_button_state != previous_button_state:
+        # Button state changed
+        if current_button_state == LOW:
+            # Button pressed
+            button_press_start_time = current_time()
+        else:
+            # Button released
+            button_press_duration = current_time() - button_press_start_time
+            if button_press_duration < hold_threshold:
+                # Short click detected
+                handle_short_click()
+            else:
+                # Button held for longer duration
+                handle_long_press(button_press_duration)
+    
+    previous_button_state = current_button_state
+
+Function handle_short_click():
+    # Action to perform on short button click
+    print("Short click detected")
+
+Function handle_long_press(duration):
+    # Action to perform on long button press
+    print("Button held for", duration, "milliseconds")

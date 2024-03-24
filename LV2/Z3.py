@@ -26,20 +26,20 @@ def setOnes():
 def runningLight(pauseTime):
 
     index = -1
+    while index + 1 < len(outputLEDs):
+        outputLEDs[index].off()
+        outputLEDs[index + 1].on()
+        index += 1
+        sleep(pauseTime)
 
-    while True:
+    index = len(outputLEDs) - 1
+    setOnes()
+    sleep(pauseTime)
 
-        while index + 1 < len(outputLEDs):
-            outputLEDs[index].off()
-            outputLEDs[index + 1].on()
-            index += 1
-            sleep(pauseTime)
-
-        while index > 0:
-            outputLEDs[index - 1].on()
-            outputLEDs[index].off()
-            index -= 1
-            sleep(pauseTime)
+    while index >= 0:
+        outputLEDs[index].off()
+        index -= 1
+        sleep(pauseTime)
 
 
 def main():
@@ -47,7 +47,8 @@ def main():
     sleep(1)
     setZeroes()
 
-    runningLight(0.2)
+    while True:
+        runningLight(0.5)
 
     print("Uredan kraj!")
 
